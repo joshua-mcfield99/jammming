@@ -1,0 +1,35 @@
+.form {
+    width: 100%;
+    margin: 50px 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form input {
+    width: 30%;
+    height: 25px;
+    max-width: 350px;
+    min-width: 300px;
+    border-radius: 20px;
+    border: solid 1px;
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.form button {
+    padding: 15px 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(12, 116, 21);
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: rgb(55, 134, 61);
+}

@@ -1,0 +1,26 @@
+.res_list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.res_list li {
+    list-style: none;
+    display: flex;
+    margin: 0 0 10px;
+    padding: 10px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.res_list li button {
+    width: 20%;
+    margin: 0 0 0 auto;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #fff;
+}
