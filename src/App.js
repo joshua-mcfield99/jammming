@@ -5,6 +5,7 @@ import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
 import { useState } from 'react';
 
+// Dumby Data
 const searchRes = [
     {
         title: "Scotty Doesn't Know",
@@ -35,10 +36,11 @@ const searchRes = [
 
 
 function App() {
+    // States
     const [playlistTitle, setPlaylisTitle] = useState('');
     const [playlistTracks, setPlaylistTracks] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-
+    // Handlers
     const handleTitle = (e) => {
         setPlaylisTitle(e.target.value);
     };
