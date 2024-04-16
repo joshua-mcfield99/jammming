@@ -1,50 +1,14 @@
 import React from 'react'
 import styles from '../styles/SearchResults.module.css'
-import Track from './Track'
+import Tracklist from './Tracklist'
 
-const data = [
-    {
-        title: "Scotty Doesn't Know",
-        artist: "Lustra",
-        album: "Left for Dead"
-    },
-    {
-        title: "Scotty Doesn't Know",
-        artist: "Lustra",
-        album: "Left for Dead"
-    },
-    {
-        title: "Scotty Doesn't Know",
-        artist: "Lustra",
-        album: "Left for Dead"
-    },
-    {
-        title: "Scotty Doesn't Know",
-        artist: "Lustra",
-        album: "Left for Dead"
-    },
-    {
-        title: "Scotty Doesn't Know",
-        artist: "Lustra",
-        album: "Left for Dead"
-    }
-]
 
-const SearchResults = () => {
+const SearchResults = (props) => {
   return (
     <>
-        <ul className={styles.res_list}>
-            {
-                data.map(song => {
-                    return (
-                        <li>
-                            <Track title={song.title} artist={song.artist} album={song.album}/>
-                            <button>+</button>
-                        </li>
-                    )
-                })
-            }
-        </ul>
+        <div className={styles.res_container}>
+            <Tracklist searchRes={props.searchRes} handleAdd={props.handleAdd}/>
+        </div>
     </>
   )
 }

@@ -2,10 +2,71 @@ import './App.css';
 import styles from './styles/App.module.css'
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
-import TrackList from './components/Tracklist';
 import Playlist from './components/Playlist';
+import { useState } from 'react';
+
+const searchRes = [
+    {
+        title: "Scotty Doesn't Know",
+        artist: "Lustra",
+        album: "Left for Dead"
+    },
+    {
+        title: "Scotty Doesn't Know",
+        artist: "Lustra",
+        album: "Left for Dead"
+    },
+    {
+        title: "Scotty Doesn't Know",
+        artist: "Lustra",
+        album: "Left for Dead"
+    },
+    {
+        title: "Scotty Doesn't Know",
+        artist: "Lustra",
+        album: "Left for Dead"
+    },
+    {
+        title: "Scotty Doesn't Know",
+        artist: "Lustra",
+        album: "Left for Dead"
+    }
+]
+
 
 function App() {
+    const [playlistTitle, setPlaylisTitle] = useState('');
+    const [playlistTracks, setPlaylistTracks] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
+
+    const handleTitle = (e) => {
+        setPlaylisTitle(e.target.value);
+    };
+
+    const handleSearch = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+    const handleAdd = (track) => {
+         // Check if the track already exists in the playlist
+        const trackExists = playlistTracks.some((playlistTrack) => playlistTrack.title === track.title);
+
+        if (!trackExists) {
+          // If the track doesn't exist in the playlist, add it
+          setPlaylistTracks([...playlistTracks, track]);
+        } else {
+          console.log('Track already exists in the playlist.');
+          // You can add your handling for when the track already exists here
+        }
+    };
+
+    const handleRemove = (trackToRemove) => {
+        // Filter out the track to be removed from the playlist
+        const updatedPlaylist = playlistTracks.filter((track) => track.title !== trackToRemove.title);
+        setPlaylistTracks(updatedPlaylist);
+    };
+    
+
   return (
     <div className={styles.container}>
         <header className={styles.title}>
@@ -13,14 +74,14 @@ function App() {
         </header>
         <main>
             <div className={styles.search_container}>
-                <SearchBar />
+                <SearchBar searchValue={searchValue} handleSearch={handleSearch}/>
             </div>
             <div className={styles.outer_container}>
                 <div className={styles.inner_container}>
-                    <SearchResults />
+                    <SearchResults searchRes={searchRes} handleAdd={handleAdd}/>
                 </div>
                 <div className={styles.inner_container}>
-                    <Playlist />
+                    <Playlist playlistTracks={playlistTracks} playlistTitle={playlistTitle} handleTitle={handleTitle} handleRemove={handleRemove}/>
                 </div>
             </div>
         </main>

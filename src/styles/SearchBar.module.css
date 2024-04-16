@@ -22,7 +22,7 @@
     padding: 15px 40px;
     border-radius: 20px;
     border: none;
-    background-color: rgb(12, 116, 21);
+    background-color: rgb(30, 215, 96);
     color: #fff;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -31,5 +31,5 @@
 
 .form button:hover {
     cursor: pointer;
-    background-color: rgb(55, 134, 61);
+    background-color: rgb(31, 187, 85);
 }
