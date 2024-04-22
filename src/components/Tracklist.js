@@ -2,14 +2,14 @@ import React from 'react'
 import styles from '../styles/Tracklist.module.css'
 import Track from './Track'
 
-const Tracklist = ({ searchRes, playlistTracks, handleAdd, handleRemove }) => {
+const Tracklist = ({ searchResults, playlistTracks, handleAdd, handleRemove }) => {
   return (
     <>
         <ul className={styles.tracklist}>
             {
                 //Check which array to map and display
-                searchRes ?
-                searchRes.map((song, i) => {
+                searchResults && searchResults.length > 0 ?
+                searchResults.map((song, i) => {
                     return (
                         <li key={i}>
                             <Track title={song.title} artist={song.artist} album={song.album}/>
@@ -17,6 +17,8 @@ const Tracklist = ({ searchRes, playlistTracks, handleAdd, handleRemove }) => {
                         </li>
                     )
                 })
+                : searchResults ?
+                <> <p className={styles.no_tracks}>Search for music</p> </>
                 :
                 //If playlist is empty show p tag
                 playlistTracks.length > 0 ? playlistTracks.map((track, i) => {
@@ -27,7 +29,7 @@ const Tracklist = ({ searchRes, playlistTracks, handleAdd, handleRemove }) => {
                         </li>
                     )
                 })
-                : <><p>Add songs</p></>
+                : <><p className={styles.no_tracks}>Add songs</p></>
             }
         </ul>
     </>

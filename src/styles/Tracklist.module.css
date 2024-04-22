@@ -1,18 +1,21 @@
 .tracklist {
+    position: relative;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 0;
     margin: 0;
+    overflow-y: scroll;
 }
 
 .tracklist li {
     width: 80%;
     list-style: none;
     display: flex;
-    margin: 0 0 10px;
+    margin: 10px 0;
     padding: 10px;
     color: #fff;
     border-bottom: 1px solid #FFF;
@@ -28,4 +31,9 @@
     cursor: pointer;
     font-size: 1.2rem;
     color: #fff;
+}
+
+.no_tracks {
+    margin: auto;
+    font-size: 1.8rem;
 }

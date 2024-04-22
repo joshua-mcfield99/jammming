@@ -7,10 +7,10 @@ const SearchResults = (props) => {
   return (
     <>
         <div className={styles.res_container}>
-            <Tracklist searchRes={props.searchRes} handleAdd={props.handleAdd}/>
+            <Tracklist searchResults={props.searchResults} handleAdd={props.handleAdd}/>
         </div>
     </>
   )
 }
 
-export default SearchResults
+export default SearchResults;
