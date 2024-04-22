@@ -36,7 +36,7 @@ function App() {
             setPlaylistTracks([...playlistTracks, track]);
             console.log(playlistTracks)
         } else {
-            console.log('Track already exists in the playlist.');
+            alert('Track already exists in the playlist.');
         }
     };
 
@@ -45,7 +45,27 @@ function App() {
         setPlaylistTracks(updatedPlaylist);
     };
 
-    Spotify.getAccessToken(); // Test call
+    const handleSave = (e) => {
+        e.preventDefault();
+        if (playlistTitle && playlistTracks.length > 0) {
+            const uris = playlistTracks.map(track => track.uri);
+            /*const playlistSave = {
+                title: playlistTitle,
+                tracksUris: uris
+            };
+            console.log(playlistSave);*/
+            Spotify.savePlaylist(playlistTitle, uris)
+            alert('Playlist saved')
+            setSearchResults([])
+            setSearchValue('')
+            setPlaylistTitle('')
+            setPlaylistTracks('')
+        } else {
+            alert('Please name your playlist and add tracks.');
+        }
+    };
+
+    //Spotify.getAccessToken(); // Test call
 
     return (
         <div className={styles.container}>
@@ -61,7 +81,7 @@ function App() {
                         <SearchResults searchResults={searchResults} handleAdd={handleAdd} />
                     </div>
                     <div className={styles.inner_container}>
-                        <Playlist playlistTracks={playlistTracks} playlistTitle={playlistTitle} handleTitle={handleTitle} handleRemove={handleRemove} />
+                        <Playlist playlistTracks={playlistTracks} playlistTitle={playlistTitle} handleTitle={handleTitle} handleRemove={handleRemove} handleSave={handleSave} />
                     </div>
                 </div>
             </main>
