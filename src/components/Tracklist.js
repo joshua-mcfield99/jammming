@@ -12,7 +12,7 @@ const Tracklist = ({ searchResults, playlistTracks, handleAdd, handleRemove }) =
                 searchResults.map((song, i) => {
                     return (
                         <li key={i}>
-                            <Track title={song.title} artist={song.artist} album={song.album}/>
+                            <Track title={song.name} artist={song.artist} album={song.album}/>
                             <button onClick={() => handleAdd(song)}>+</button>
                         </li>
                     )
@@ -24,7 +24,7 @@ const Tracklist = ({ searchResults, playlistTracks, handleAdd, handleRemove }) =
                 playlistTracks.length > 0 ? playlistTracks.map((track, i) => {
                     return (
                         <li key={i}>
-                            <Track title={track.title} artist={track.artist} album={track.album}/>
+                            <Track title={track.name} artist={track.artist} album={track.album}/>
                             <button onClick={() => handleRemove(track)}>-</button>
                         </li>
                     )

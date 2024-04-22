@@ -29,16 +29,19 @@ function App() {
     };
 
     const handleAdd = (track) => {
-        const trackExists = playlistTracks.some((playlistTrack) => playlistTrack.title === track.title);
+        const trackExists = playlistTracks.some((playlistTrack) => 
+        playlistTrack.name === track.name && 
+        playlistTrack.artist === track.artist);
         if (!trackExists) {
             setPlaylistTracks([...playlistTracks, track]);
+            console.log(playlistTracks)
         } else {
             console.log('Track already exists in the playlist.');
         }
     };
 
     const handleRemove = (trackToRemove) => {
-        const updatedPlaylist = playlistTracks.filter((track) => track.title !== trackToRemove.title);
+        const updatedPlaylist = playlistTracks.filter((track) => track.name !== trackToRemove.name);
         setPlaylistTracks(updatedPlaylist);
     };
 
