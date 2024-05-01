@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
 import styles from '../styles/Tracklist.module.css'
 import Track from './Track'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 
 const Tracklist = ({ searchResults, playlistTracks, handleAdd, handleRemove }) => {
+
   return (
     <>
         <ul className={styles.tracklist}>
@@ -12,7 +15,18 @@ const Tracklist = ({ searchResults, playlistTracks, handleAdd, handleRemove }) =
                 searchResults.map((song, i) => {
                     return (
                         <li key={i}>
-                            <Track title={song.name} artist={song.artist} album={song.album}/>
+                            <div className={styles.track}>
+                                <Track title={song.name} artist={song.artist} album={song.album}/>
+                            </div>
+                            <div className={styles.audioContainer}>
+                                {song.preview_url && (
+                                    <audio
+                                        src={song.preview_url}
+                                        type="audio/mpeg"
+                                        controls
+                                    />
+                                )}
+                            </div>
                             <button onClick={() => handleAdd(song)}>+</button>
                         </li>
                     )

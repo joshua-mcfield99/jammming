@@ -13,7 +13,7 @@
 }
 
 .tracklist li {
-    width: 80%;
+    width: 90%;
     height: fit-content;
     list-style: none;
     display: flex;
@@ -21,6 +21,19 @@
     padding: 10px;
     color: #fff;
     border-bottom: 1px solid #FFF;
+}
+
+.track {
+    width: 25%;
+    margin: 0 auto 0 1px;
+}
+
+.track div {
+    width: 100%;
+}
+
+.track h3 {
+    width: 80%;
 }
 
 .tracklist li button {
@@ -35,11 +48,12 @@
     color: #fff;
 }
 
-.tracklist li div {
-    max-width: 75%;
-}
-
 .no_tracks {
     margin: auto;
     font-size: 1.8rem;
+}
+
+/* Custom styling for audio controls */
+.audioContainer {
+    margin: auto;
 }
