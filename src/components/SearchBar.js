@@ -12,7 +12,7 @@ const SearchBar = (props) => {
 
   return (
     <>
-        <form className={styles.form}>
+        <div className={styles.form}>
             <input 
                 id='search' 
                 placeholder='Search' 
@@ -21,7 +21,7 @@ const SearchBar = (props) => {
                 onChange={props.handleSearchValue}
             />
             <button onClick={handleSearch}>Search</button>
-        </form>
+        </div>
     </>
   )
 }

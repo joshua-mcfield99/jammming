@@ -4,28 +4,24 @@ let accessToken;
 
 const Spotify = {
     getAccessToken() {
-        if(accessToken) {
-            //the below console.log shows
-            //console.log(accessToken);
+        if (accessToken) {
             return accessToken;
         }
 
         const findAccessToken = window.location.href.match(/access_token=([^&]*)/);
         const findExpiresIn = window.location.href.match(/expires_in=([^&]*)/);
-        //console.log(findAccessToken);
-        //console.log(findExpiresIn);
 
-        if(findAccessToken && findExpiresIn) {
+        if (findAccessToken && findExpiresIn) {
             accessToken = findAccessToken[1];
             const expiresIn = Number(findExpiresIn[1]);
-            window.setTimeout(() => accessToken = '', expiresIn * 1000);
-            window.history.pushState('Access Token', null, '/');
-            //the below console.log shows
-            //console.log(accessToken);
+            window.setTimeout(() => {
+                accessToken = '';
+                window.history.pushState('Access Token', null, '/'); // Clear access token from URL without refreshing
+            }, expiresIn * 1000);
             return accessToken;
         } else {
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-            window.location = accessUrl;
+            window.location.replace(accessUrl); // Use replace instead of assign to avoid adding to the history stack
         }
     },
 
