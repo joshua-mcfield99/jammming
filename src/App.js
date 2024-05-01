@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
@@ -12,6 +12,12 @@ function App() {
     const [playlistTracks, setPlaylistTracks] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+
+    // Fetch access token on component mount
+    useEffect(() => {
+        Spotify.getAccessToken();
+    }, []);
+
 
     // Handlers
     const handleSearchValue = (e) => {
